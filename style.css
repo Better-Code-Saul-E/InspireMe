@@ -11,10 +11,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     min-height: 100vh;
     background-color: var(--primary-color);
 }
 section {
+    margin-top: 10%;
     width: 40%;
     background-color: var(--secondary-color);
     border-radius: 20px;
@@ -81,6 +83,24 @@ button:hover {
     font-weight: bolder;
 }
 
+footer {
+    margin-top: auto;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 -5px 10px white;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+}
+footer img {
+    width: 30px;
+    height: 30px;
+}
+
+
 /* ========================================
 MEDIA QUERIES
 ======================================== */
@@ -89,6 +109,7 @@ MEDIA QUERIES
 @media all and (max-width: 768px) {
     section {
         width: 70%;
+        margin-top: 30%;
     }
 }
 
@@ -96,5 +117,6 @@ MEDIA QUERIES
 @media all and (min-width: 769px) and (max-width: 992px) {
     section {
         width: 55%;
+        margin-top: 20%;
     }
 }

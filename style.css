@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #5C7DEA;
+    --secondary-color: white;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+}
+section {
+    width: 40%;
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 30px 20px;
+}
+section h1 {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    margin: 8% 0 5% 0;
+    padding-left: 40px;
+    line-height: 1.45;
+    position: relative;
+}
+blockquote:before {
+    padding-left: 10px;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
+
+#selection-container {
+    display: flex;
+    justify-content: space-between;
+}
+select, button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+select {
+    width: 75%;
+}
+
+button {
+    height: 50px;
+    min-width: 20%;
+    padding: 0 15px;
+}
+
+button:hover {
+    font-weight: bolder;
+}
+
+/* ========================================
+MEDIA QUERIES
+======================================== */
+
+/* Landscape laptops */
+@media all and (max-width: 768px) {
+    section {
+        width: 70%;
+    }
+}
+
+/* Larger tablets, laptops, and desktops */
+@media all and (min-width: 769px) and (max-width: 992px) {
+    section {
+        width: 55%;
+    }
+}

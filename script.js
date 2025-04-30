@@ -11,10 +11,32 @@ const languageOptions = {
     it: "Italian",
     pt: "Portuguese",
     ru: "Russian",
+    zh: "Chinese Simplified",
     ja: "Japanese",
-    zh: "Chinese",
-    ar: "Arabic"
+    ko: "Korean",
+    ar: "Arabic",
+    hi: "Hindi",
+    nl: "Dutch",
+    pl: "Polish",
+    ca: "Catalan",
+    da: "Danish",
+    fi: "Finnish",
+    el: "Greek",
+    hu: "Hungarian",
+    tr: "Turkish",
+    sv: "Swedish",
+    no: "Norwegian",
+    ro: "Romanian",
+    th: "Thai",
+    vi: "Vietnamese",
+    he: "Hebrew",
+    uk: "Ukrainian",
+    bn: "Bengali",
+    ms: "Malay",
+    ta: "Tamil",
+    tl: "Tagalog"
 };
+
 
 Object.keys(languageOptions).forEach(lang => {
     const option = document.createElement("option");

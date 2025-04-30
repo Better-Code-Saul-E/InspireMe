@@ -70,9 +70,9 @@ function randomQuote(language = 'en') {
         }
     })
     .catch(error => {
-        console.error('Quote fetch error:', error);
+        alert('Quote fetch error:', error);
         quote.textContent = "Error getting quote.";
-        author.textContent = "";
+        author.textContent = "developer";
     });
 }
 

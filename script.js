@@ -45,32 +45,40 @@ Object.keys(languageOptions).forEach(lang => {
     languages.appendChild(option);
 });
 
-function randomQuote(language = 'en') {
+let currentQuote = "";
+let currentAuthor = "";
+
+function displayQuote(language = 'en') {
+    if (!currentQuote) return;
+
+    if (language === 'en') {
+        quote.textContent = currentQuote;
+        author.textContent = currentAuthor;
+    } else {
+        fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(currentQuote)}&langpair=en|${language}`)
+        .then(response => response.json())
+        .then(data => {
+            quote.textContent = data.responseData.translatedText;
+            author.textContent = currentAuthor;
+        })
+        .catch(error => {
+            alert('Translation error. Showing original.');
+            quote.textContent = currentQuote;
+            author.textContent = currentAuthor;
+        });
+    }
+}
+
+function fetchNewQuote(language = 'en') {
     fetch(`http://api.quotable.io/random`)
     .then(response => response.json())
     .then(result => {
-        const originalQuote = result.content;
-        const quoteAuthor = result.author;
-
-        if (language !== 'en') {
-            fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalQuote)}&langpair=en|${language}`)
-            .then(response => response.json())
-            .then(data => {
-                quote.textContent = data.responseData.translatedText;
-                author.textContent = quoteAuthor;
-            })
-            .catch(error => {
-                alert('Translation error:', error);
-                quote.textContent = originalQuote;
-                author.textContent = quoteAuthor;
-            });
-        } else {
-            quote.textContent = originalQuote;
-            author.textContent = quoteAuthor;
-        }
+        currentQuote = result.content;
+        currentAuthor = result.author;
+        displayQuote(language);
     })
     .catch(error => {
-        alert('Quote fetch error:', error);
+        alert('Quote fetch error.');
         quote.textContent = "Error getting quote.";
         author.textContent = "developer";
     });
@@ -81,7 +89,12 @@ generateQuoteBtn.addEventListener("click", () => {
     author.textContent = "be inspired";
 
     const selectedLang = languages.value;
-    setTimeout(() => randomQuote(selectedLang), 2000);
+    setTimeout(() => fetchNewQuote(selectedLang), 1000);
 });
 
-randomQuote();
+languages.addEventListener("change", () => {
+    const selectedLang = languages.value;
+    displayQuote(selectedLang);
+});
+
+fetchNewQuote();
